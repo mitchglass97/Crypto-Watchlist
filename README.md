@@ -1,8 +1,8 @@
 # About
 
-In this repository I intend to create a Crypto Watchlist web app. Below are mockups that I have created in Figma.
+In this repository I intend to create a Crypto Watchlist web app. Below are mockups that I created in Figma.
 
-![Landing Page](https://user-images.githubusercontent.com/52224377/110894620-ca561100-82bd-11eb-93b0-fd9280d44ed0.png)
+![Landing Page](https://user-images.githubusercontent.com/52224377/110902002-cb416f80-82ca-11eb-9972-480ee2dee246.png)
 
 ![Login Page](https://user-images.githubusercontent.com/52224377/110894623-cde99800-82bd-11eb-8b3a-b02c25cd0d12.png)
 
@@ -10,30 +10,43 @@ In this repository I intend to create a Crypto Watchlist web app. Below are mock
 
 ![Home Page (Edit Mode)](https://user-images.githubusercontent.com/52224377/110894630-d17d1f00-82bd-11eb-9461-dd31596bb012.png)
 
-The road map for this app will look something like:
+This project will use:
 
-- Set up boilerplate backend and SQL database
-     - Database will include two tables:
-          - User table will store all users (schema: username, their hashed password, and a unique userId)
-          - Watchlist table will be a table of all coins in users' watchlists (schema: coin name, the associated userId)
-- Create Register/Login pages
-     - Create input form for username and password
-     - On Register, send a POST request to add account to SQL database (if the account/username does not exist already)
-     - On Login, send a GET request to determine whether the username exists.
-          - If the username exists, check if the password matches. The password will be hashed using a cryptographic algorithm such as Argon2.
-     - Have to figure out authentication using JWT
-- Create Home page with a table of coins (user's watchlist)
-     - On page load, make a GET request to the Watchlist table in SQL database to get all the coin names in the Watchlist that match the userId of the logged-in user
-     - Create input fields to search for and add a coin to table.
-     - The coin price information will be obtained from the Binance API.
-     - Make the table will be editable, meaning users can Add and Remove coins from their watchlist.
-     - Adding a coin will send a POST request to add an entry to the Watchlist table with the inputted coin name and userId. Duplicate
-     - Removing a coin will send a DELETE request to the database to delete the Watchlist entry that matches the coin name and userId)
+- **PostgreSQL**, database
+- **NodeJS** and **Express**, back-end
+- **ReactJS**, front-end framework
+- **jsonwebtoken**, JWT authentication
+- **bcrypt**, hashing passwords
+- **dotenv**, use .env file in NodeJS
+
+The road map for this project currently looks something like:
+
+- [x] get authentication (register/login) working with bcrypt password hashing, backend only
+- [ ] get authentication (register/login) working with JWT (to persist authentication), backend only
+- [ ] create a front-end for the register and login pages
+- [ ] redirect to homepage after logging in. Display username on homepage.
+- [ ] set up backend routes to GET, POST, and DELETE coins from any given user's watchlist
+- [ ] set up homepage front-end: an input for adding a coin to watchlist, and a table displaying all coins on user's watchlist. only allow user to Add coins that are supported by Binance. can use [Material-UI's Autocomplete component](https://material-ui.com/components/autocomplete/) in combination with the [Binance API](https://github.com/binance/binance-spot-api-docs/blob/master/rest-api.md) for the coin input
+- [ ] add an Edit Watchlist button which puts a "Remove" button next to each coin in the table
+- [ ] display price data from Binance API next to each coin
+- [ ] Add an icon for each coin using the [Crypto Icons API](https://cryptoicons.org/)
+- [ ] Landing Page
 
 The above would be the core functionality. Ideas to add after are:
 
-- The ability to click on each coin in watchlist to get a page dedicated to that coin with things like:
-     - An RSS twitter feed for the $CoinSymbol
-     - Graph of the coin price over time
-- Use [Crypto Icons API](https://cryptoicons.org/) to display each crypto's icon in table
-- Make
+- [ ] The ability to click on each coin in watchlist to get a page dedicated to that coin with things like RSS twitter feed for the $CoinSymbol and a graph of the historical coin price
+
+# Setup
+
+This app requires an .env file with the following variables
+
+```
+PORT = Port to run the app on (e.g. 5000 for localhost5000)
+DB_USER = Postgres username
+DB_PASSWORD = Postgres password
+DB_HOST = Postgres host (e.g. localhost)
+DB_PORT = Postgres port, usually 5432 or 5433
+DB_DATABASE = Postgres database
+```
+
+home-page front-end (
