@@ -11,7 +11,7 @@ The road map for this app will look something like:
 - Set up boilerplate backend and SQL database
      - Database will include two tables:
           - User table will store all users (schema: username, their hashed password, and a unique userId)
-          - Watchlist table will be a table of all coins in users' watchlist (schema: coin name, the associated userId)
+          - Watchlist table will be a table of all coins in users' watchlists (schema: coin name, the associated userId)
 - Create Register/Login pages
      - On Register, send a POST request to add account to SQL database (if the account/username does not exist already)
      - On Login, send a GET request to determine whether the username exists.
