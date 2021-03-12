@@ -1,12 +1,10 @@
 # About
 
-In this repository I intend to create a Crypto Watchlist web app. Below are two mockups that I have created in Figma.
+In this repository I intend to create a Crypto Watchlist web app. Below are mockups that I have created in Figma.
 
 ![Landing Page](https://user-images.githubusercontent.com/52224377/110894620-ca561100-82bd-11eb-93b0-fd9280d44ed0.png)
 
 ![Login Page](https://user-images.githubusercontent.com/52224377/110894623-cde99800-82bd-11eb-8b3a-b02c25cd0d12.png)
-
-![Register Page](https://user-images.githubusercontent.com/52224377/110894626-cfb35b80-82bd-11eb-9b5d-f1ebc38d6def.png)
 
 ![Home Page](https://user-images.githubusercontent.com/52224377/110894627-d0e48880-82bd-11eb-89dc-50163993afb5.png)
 
