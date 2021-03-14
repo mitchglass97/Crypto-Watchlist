@@ -18,17 +18,18 @@ This project will use:
 - **jsonwebtoken**, JWT authentication
 - **bcrypt**, hashing passwords
 - **dotenv**, use .env file in NodeJS
+- **nodemon**, dev dependency
 
 The road map for this project currently looks something like:
 
 - [x] get authentication (register/login) working with bcrypt password hashing, backend only
-- [ ] get authentication (register/login) working with JWT (to persist authentication), backend only
+- [x] get authentication (register/login) working with JWT (to persist authentication), backend only
 - [ ] create a front-end for the register and login pages
 - [ ] redirect to homepage after logging in. Display username on homepage.
 - [ ] set up backend routes to GET, POST, and DELETE coins from any given user's watchlist
-- [ ] set up homepage front-end: an input for adding a coin to watchlist, and a table displaying all coins on user's watchlist. only allow user to Add coins that are supported by Binance. can use [Material-UI's Autocomplete component](https://material-ui.com/components/autocomplete/) in combination with the [Binance API](https://github.com/binance/binance-spot-api-docs/blob/master/rest-api.md) for the coin input
+- [ ] set up homepage front-end: an input for adding a coin to watchlist, and a table displaying all coins on user's watchlist. only allow user to add coins that are supported by Binance. can use [Material-UI's Autocomplete component](https://material-ui.com/components/autocomplete/) in combination with the [Binance API](https://github.com/binance/binance-spot-api-docs/blob/master/rest-api.md) for the coin input
 - [ ] add an Edit Watchlist button which puts a "Remove" button next to each coin in the table
-- [ ] display price data from Binance API next to each coin
+- [ ] display price data from Binance API in the table
 - [ ] Add an icon for each coin using the [Crypto Icons API](https://cryptoicons.org/)
 - [ ] Landing Page
 
@@ -47,6 +48,5 @@ DB_PASSWORD = Postgres password
 DB_HOST = Postgres host (e.g. localhost)
 DB_PORT = Postgres port, usually 5432 or 5433
 DB_DATABASE = Postgres database
+JWT_SECRET_KEY = Secret key used to sign JWT tokens. Can be any arbitrary string.
 ```
-
-home-page front-end (
