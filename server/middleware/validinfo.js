@@ -1,7 +1,8 @@
+// Middleware that verifies that username and password strings are not empty
+
 module.exports = function (req, res, next) {
 	const { username, password } = req.body;
 
-	// Verify that username and password strings are not empty
 	if (req.path === "/register") {
 		if (![username, password].every(Boolean)) {
 			console.log("missing credentials! middleware ending request");

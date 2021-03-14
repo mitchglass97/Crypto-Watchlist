@@ -1,4 +1,4 @@
-// Middleware for verifying JWT token
+// Middleware for verifying JWT token using jsonwebtoken.verify
 
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
@@ -8,7 +8,7 @@ module.exports = async (req, res, next) => {
 		// Check for a JWT Token
 		const jwtToken = req.header("token");
 
-		if (!jwtToken) {
+		if (!jwtToken || jwtToken == "undefined") {
 			return res.status(403).json("NOT AUTHORIZED");
 		}
 

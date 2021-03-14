@@ -1,3 +1,18 @@
+// Main file for the NodeJS/Express server
+//
+// The server handles:
+// 1) Adding a new user to the User table (adds username and
+// a password hash, hashed using Bcrypt). Will not register a user
+// if the username already exists
+//
+// 2) Logging a user in (compares password to password hash stored in
+// database). both register and login routes will provide a signed JWT token
+// (signed using JSONWebtoken package)
+//
+// 3) is-verify route returns true if user's JWT Token is valid
+//
+// 4) Dashboard route returns all coins in the logged-in user's watchlist
+
 const express = require("express");
 const app = express();
 const cors = require("cors");

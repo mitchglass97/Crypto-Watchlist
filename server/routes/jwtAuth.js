@@ -1,4 +1,4 @@
-// Register, Login & Verify JWT Routes
+// Register, Login and Verify JWT Routes
 
 // Imports
 const router = require("express").Router(); // for creating modular Express routes

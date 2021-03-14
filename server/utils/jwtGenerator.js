@@ -1,4 +1,4 @@
-// Generates a JWT token using the jsonwebtoken package
+// Generates a signed JWT token using the JSONwebtoken package
 
 const jwt = require("jsonwebtoken");
 require("dotenv").config;
