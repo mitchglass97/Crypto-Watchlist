@@ -1,10 +1,13 @@
 import React, { Fragment, useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Dashboard = ({ setAuth }) => {
 	const [watchlist, setWatchlist] = useState([]);
 	const [watchlistLoaded, setWatchlistLoaded] = useState(false);
 	const [username, setUsername] = useState("");
 	const [coinName, setCoinName] = useState("");
+	const [editMode, setEditMode] = useState(false);
 
 	// Fetch the watchlist from server on page load
 	useEffect(() => {
@@ -32,6 +35,7 @@ const Dashboard = ({ setAuth }) => {
 			headers: { token: localStorage.token },
 		});
 		const parseResponse = await response.json();
+		console.log(parseResponse);
 		setWatchlist(parseResponse);
 	};
 
@@ -47,7 +51,11 @@ const Dashboard = ({ setAuth }) => {
 
 	// When user types into "Search for a coin" input
 	const onChangeForm = (e) => {
-		setCoinName(e.target.value);
+		setCoinName(e.target.value.toUpperCase());
+	};
+
+	const editModeButton = (e) => {
+		setEditMode(!editMode);
 	};
 
 	// When user submits Add a Coin form
@@ -61,7 +69,19 @@ const Dashboard = ({ setAuth }) => {
 			body: JSON.stringify(body),
 		});
 		const parseResponse = await addCoin.json();
-		fetchWatchlist();
+		console.log(parseResponse.error);
+		if (parseResponse.error == "001") {
+			toast.error("Error: Invalid coin name or coin not supported by the Binance API.", {
+				pauseOnHover: false,
+			});
+			return;
+		} else if (parseResponse.error == "002") {
+			toast.error(`Error: $${coinName} is already on your watchlist.`, { pauseOnHover: false });
+			return;
+		} else {
+			fetchWatchlist(); // no Errors
+			setCoinName("");
+		}
 	};
 
 	// Delete coin from watchlist
@@ -85,6 +105,10 @@ const Dashboard = ({ setAuth }) => {
 		setAuth(false);
 	};
 
+	const myTest = async (idx) => {
+		return idx;
+	};
+
 	return (
 		<Fragment>
 			<h3>Dashboard</h3>
@@ -102,17 +126,20 @@ const Dashboard = ({ setAuth }) => {
 					Add Coin to Watchlist
 				</button>
 			</form>
-			<button className='btn btn-primary' onClick={(e) => logout(e)}>
+			<button className='btn btn-danger' onClick={(e) => logout(e)}>
 				Logout
+			</button>
+			<button className='btn btn-primary' onClick={(e) => editModeButton(e)}>
+				Edit Watchlist
 			</button>
 			<table className='table'>
 				<thead>
 					<tr>
 						<th scope='col'>Coin Name</th>
-						<th scope='col'>Coin Price</th>
+						<th scope='col'>Price</th>
 						<th scope='col'>Change($)</th>
 						<th scope='col'>Change(%)</th>
-						<th scope='col'>Action</th>
+						{editMode && <th scope='col'>Action</th>}
 					</tr>
 				</thead>
 				<tbody>
@@ -121,21 +148,23 @@ const Dashboard = ({ setAuth }) => {
 							return (
 								<tr key={idx}>
 									<th scope='row'>{watchlist[idx].coin_name}</th>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td>
-										<button
-											className='btn btn-danger'
-											onClick={() =>
-												deleteCoinFromWatchlist(
-													idx
-												)
-											}
-										>
-											Remove
-										</button>
-									</td>
+									<td>$ {watchlist[idx].price}</td>
+									<td>$ {watchlist[idx].priceChange}</td>
+									<td>{watchlist[idx].priceChangePercent} %</td>
+									{editMode && (
+										<td>
+											<button
+												className='btn btn-danger'
+												onClick={() =>
+													deleteCoinFromWatchlist(
+														idx
+													)
+												}
+											>
+												Remove
+											</button>
+										</td>
+									)}
 								</tr>
 							);
 						})}

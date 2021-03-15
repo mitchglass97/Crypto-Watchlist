@@ -5,13 +5,44 @@ const router = require("express").Router();
 const pool = require("../database/db");
 const authorization = require("../middleware/authorization");
 const validCoin = require("../middleware/validCoin");
+const fetch = require("node-fetch");
 
 // Return all coins in user's watchlist
 router.get("/watchlist", authorization, async (req, res) => {
 	try {
+		// Get all coins in watchlist
 		const { user } = req;
-		const userID = await pool.query("SELECT coin_name FROM watchlist WHERE user_name = $1;", [user]);
-		res.json(userID.rows);
+		const watchlistCoins = await pool.query("SELECT coin_name FROM watchlist WHERE user_name = $1;", [
+			user,
+		]);
+
+		// For each coin, get price from Binance API
+		let stringAPI = "";
+		let payload = [];
+		let temp = {};
+		for (elt in watchlistCoins.rows) {
+			stringAPI =
+				"https://api.binance.us/api/v3/ticker/24hr?symbol=" +
+				watchlistCoins.rows[elt].coin_name +
+				"USD";
+			response = await fetch(stringAPI);
+			response = await response.json();
+			price = parseFloat(response.lastPrice).toFixed(2);
+			priceChange = parseFloat(response.priceChange).toFixed(2);
+			priceChangePercent = parseFloat(response.priceChangePercent).toFixed(2);
+
+			temp = {
+				coin_name: watchlistCoins.rows[elt].coin_name,
+				price: price,
+				priceChange: priceChange,
+				priceChangePercent,
+				priceChangePercent,
+			};
+
+			payload = payload.concat(temp);
+		}
+		console.log(payload);
+		res.json(payload);
 	} catch (error) {
 		console.log(error);
 		res.status(500).send("Server Error");

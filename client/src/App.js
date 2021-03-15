@@ -1,6 +1,8 @@
 import "./App.css";
 import { Fragment, useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // Components
 import Dashboard from "./components/Dashboard";
@@ -14,6 +16,9 @@ function App() {
 
 	const setAuth = (boolean) => {
 		setIsAuthenticated(boolean);
+		if (boolean) {
+			console.log("hey");
+		}
 	};
 
 	const isAuth = async () => {
@@ -41,6 +46,7 @@ function App() {
 		<Fragment>
 			<BrowserRouter>
 				<div className='container'>
+					<ToastContainer />
 					<Switch>
 						<Route
 							exact

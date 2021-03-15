@@ -5,13 +5,11 @@ module.exports = function (req, res, next) {
 
 	if (req.path === "/register") {
 		if (![username, password].every(Boolean)) {
-			console.log("missing credentials! middleware ending request");
-			return res.status(401).json("Missing credentials");
+			return res.status(401).json({ message: "Missing credentials" });
 		}
 	} else if (req.path === "/login") {
 		if (![username, password].every(Boolean)) {
-			console.log("missing credentials! middleware ending request");
-			return res.status(401).json("Missing credentials");
+			return res.status(401).json({ message: "Missing credentials" });
 		}
 	}
 

@@ -16,7 +16,7 @@ router.post("/register", validInfo, async (req, res) => {
 		// Check if username exists
 		const user = await pool.query("SELECT * FROM users WHERE user_name = $1;", [username]);
 		if (user.rows.length !== 0) {
-			return res.status(401).send("Username already exists");
+			return res.status(401).json({ message: "Username already exists" });
 		}
 
 		// Hash password with bcrypt
@@ -25,10 +25,10 @@ router.post("/register", validInfo, async (req, res) => {
 		bcrypt.genSalt(saltRounds, function (err, salt) {
 			bcrypt.hash(password, salt, async function (err, hash) {
 				// Insert hash into database
-				const registerUser = await pool.query("INSERT INTO users(user_name, user_password) VALUES($1, $2) RETURNING *;", [
-					username,
-					hash,
-				]);
+				const registerUser = await pool.query(
+					"INSERT INTO users(user_name, user_password) VALUES($1, $2) RETURNING *;",
+					[username, hash]
+				);
 
 				// Generate and send a JWT token
 				const token = jwtGenerator(registerUser.rows[0].user_name);
@@ -53,11 +53,13 @@ router.post("/login", validInfo, async (req, res) => {
 		}
 
 		// Use bcrypt to compare the password from user with the password hash stored in the database
-		const passwordHash = await pool.query("SELECT user_password FROM users WHERE user_name = $1;", [username]);
+		const passwordHash = await pool.query("SELECT user_password FROM users WHERE user_name = $1;", [
+			username,
+		]);
 
 		bcrypt.compare(password, passwordHash.rows[0].user_password, function (err, result) {
 			if (!result) {
-				return res.status(401).send("Password does not match");
+				return res.status(401).json({ message: "Incorrect password" });
 			} else {
 				// Password matches, so generate and send a JWT token
 				const token = jwtGenerator(user.rows[0].user_name);

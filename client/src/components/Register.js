@@ -3,6 +3,8 @@
 
 import React, { Fragment, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Register = ({ setAuth }) => {
 	const [inputs, setInputs] = useState({
@@ -36,12 +38,12 @@ const Register = ({ setAuth }) => {
 
 			// If server response status is OK (status code 200), we receive a JWT token.
 			// Save the token to browser local storage
+			const parseResponse = await registerUser.json();
 			if (registerUser.ok) {
-				const parseResponse = await registerUser.json();
 				localStorage.setItem("token", parseResponse.token);
 				setAuth(true);
 			} else {
-				console.log("error registering account");
+				toast.error(parseResponse.message);
 			}
 		} catch (error) {
 			console.log(error);

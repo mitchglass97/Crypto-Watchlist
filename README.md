@@ -28,14 +28,15 @@ The road map for this project currently looks something like:
 - [x] get authentication (register/login) working with JWT (to persist authentication), backend only
 - [x] create basic front-end for the landing, register, login, dashboard pages
 - [x] redirect to homepage after logging in. Display username on homepage.
-- [ ] display the various errors on login/register page (invalid username/password, username already exists, passwords dont match, etc)
+- [x] display the various errors with react-toastify (invalid password, username already exists when registering, invalid coin name, coin already on watchlist)
 - [x] set up Watchlist table and test functionality, backend only
 - [x] set up backend routes to GET, POST, and DELETE coins from any given user's watchlist
 - [x] set up homepage front-end: an input for adding a coin to watchlist, and a table displaying all coins on user's watchlist. only allow user to add coins that are supported by Binance.
 - [x] add a "Remove" button next to each coin in the table
-- [ ] add an Edit Watchlist button which toggles the table column with the "Remove" buttons
-- [ ] display price data from Binance API in the table
+- [x] add an Edit Watchlist button which toggles the table column with the "Remove" buttons
+- [x] display price data from Binance API in the table
 - [ ] make it all look nice (bare-bones CSS up until this point)
+- [ ] set color of table entries for price change and percent change based on positive or negative (green or red?)
 - [ ] Landing Page
 
 The above would be the core functionality. Ideas to add after are:
