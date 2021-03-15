@@ -1,5 +1,7 @@
-// Middleware for verifying that a coin is valid. Has to meet 2 requirements
+// Middleware for verifying that a coinName input is valid. Has to meet 2 requirements:
+//
 // 1) can't already be in user's watchlist (no duplicates)
+//
 // 2) has to be supported in binance API
 
 // Imports

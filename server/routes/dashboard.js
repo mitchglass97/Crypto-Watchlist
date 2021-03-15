@@ -6,14 +6,11 @@ const pool = require("../database/db");
 const authorization = require("../middleware/authorization");
 const validCoin = require("../middleware/validCoin");
 
-// Return user_id. just as a test. later this will return the user's watchlist
+// Return all coins in user's watchlist
 router.get("/watchlist", authorization, async (req, res) => {
 	try {
 		const { user } = req;
-
-		// Check if username exists
 		const userID = await pool.query("SELECT coin_name FROM watchlist WHERE user_name = $1;", [user]);
-		console.log(userID.rows);
 		res.json(userID.rows);
 	} catch (error) {
 		console.log(error);
@@ -21,7 +18,7 @@ router.get("/watchlist", authorization, async (req, res) => {
 	}
 });
 
-// Return user_id. just as a test. later this will return the user's watchlist
+// Return username
 router.get("/username", authorization, async (req, res) => {
 	try {
 		const { user } = req;
@@ -32,13 +29,12 @@ router.get("/username", authorization, async (req, res) => {
 	}
 });
 
-// Add coin
+// Add coin to watchlist
 router.post("/addcoin", authorization, validCoin, async (req, res) => {
 	try {
 		const { coinName } = req.body;
 		const { user } = req;
 
-		// Add coin to Watchlist table
 		const addCoinToWatchlist = await pool.query(
 			"INSERT INTO watchlist(user_name, coin_name) VALUES($1, $2) RETURNING *;",
 			[user, coinName]
@@ -51,7 +47,7 @@ router.post("/addcoin", authorization, validCoin, async (req, res) => {
 	}
 });
 
-// Delete coin
+// Delete coin from watchlist
 router.post("/deletecoin", authorization, async (req, res) => {
 	try {
 		const { coinName } = req.body;
