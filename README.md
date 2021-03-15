@@ -36,13 +36,13 @@ The road map for this project currently looks something like:
 - [x] add an Edit Watchlist button which toggles the table column with the "Remove" buttons
 - [x] display price data from Binance API in the table
 - [ ] make it all look nice (bare-bones CSS up until this point)
+- [ ] make the coin input a [Material-UI Autocomplete component](https://material-ui.com/components/autocomplete/)
 - [ ] set color of table entries for price change and percent change based on positive or negative (green or red?)
 - [ ] Landing Page
 
 The above would be the core functionality. Ideas to add after are:
 
 - [ ] The ability to click on each coin in watchlist to get a page dedicated to that coin with things like RSS twitter feed for the $CoinSymbol and a graph of the historical coin price
-- [ ] make the coin input a [Material-UI Autocomplete component](https://material-ui.com/components/autocomplete/) in combination with the [Binance API](https://github.com/binance/binance-spot-api-docs/blob/master/rest-api.md) for the coin input
 - [ ] Add an icon for each coin using the [Crypto Icons API](https://cryptoicons.org/)
 
 # Setup
