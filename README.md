@@ -17,7 +17,8 @@ This project will use:
 - **ReactJS**, front-end framework // **React Router DOM**, page routing // **React Toastify**, notifications
 - **Bootstrap**, CSS styling
 - **jsonwebtoken**, JWT authentication
-- **bcrypt**, hashing passwords
+- **bcrypt**, hashing passwords,
+- **node-fetch**, making fetch request on node server
 - **dotenv**, use .env file in NodeJS
 - **nodemon**, dev dependency
 
@@ -25,11 +26,11 @@ The road map for this project currently looks something like:
 
 - [x] get authentication (register/login) working with bcrypt password hashing, backend only
 - [x] get authentication (register/login) working with JWT (to persist authentication), backend only
-- [x] create a front-end for the register and login pages
+- [x] create basic front-end for the landing, register, login, dashboard pages
 - [x] redirect to homepage after logging in. Display username on homepage.
 - [ ] display the various errors on login/register page (invalid username/password, username already exists, passwords dont match, etc)
-- [ ] set up Watchlist table and test functionality, backend only
-- [ ] set up backend routes to GET, POST, and DELETE coins from any given user's watchlist
+- [x] set up Watchlist table and test functionality, backend only
+- [x] set up backend routes to GET, POST, and DELETE coins from any given user's watchlist
 - [ ] set up homepage front-end: an input for adding a coin to watchlist, and a table displaying all coins on user's watchlist. only allow user to add coins that are supported by Binance. can use [Material-UI's Autocomplete component](https://material-ui.com/components/autocomplete/) in combination with the [Binance API](https://github.com/binance/binance-spot-api-docs/blob/master/rest-api.md) for the coin input
 - [ ] add an Edit Watchlist button which puts a "Remove" button next to each coin in the table
 - [ ] display price data from Binance API in the table

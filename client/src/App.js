@@ -16,10 +16,6 @@ function App() {
 		setIsAuthenticated(boolean);
 	};
 
-	useEffect(() => {
-		isAuth();
-	}, []);
-
 	const isAuth = async () => {
 		try {
 			const checkIfTokenVerified = await fetch("http://localhost:5000/auth/is-verify", {
@@ -36,6 +32,10 @@ function App() {
 			console.log(error);
 		}
 	};
+
+	useEffect(() => {
+		isAuth();
+	}, []);
 
 	return (
 		<Fragment>
