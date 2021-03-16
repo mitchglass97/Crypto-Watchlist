@@ -83,6 +83,10 @@ a:hover {
 	margin-bottom: 20px;
 }
 
+#master-container {
+	min-height: 550px;
+}
+
 #navbarResponsive {
 	width: 100vw !important;
 	padding-top: 13px;
@@ -139,7 +143,7 @@ a:hover {
 	}
 }
 
-@media (max-height: 650px) {
+@media (max-height: 1000px) {
 	#footer {
 		width: 100w !important;
 	}

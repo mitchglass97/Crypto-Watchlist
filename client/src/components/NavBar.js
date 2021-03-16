@@ -60,8 +60,6 @@ const NavBar = (props) => {
 										type='button'
 										id='dropdownMenuButton'
 										data-toggle='dropdown'
-										aria-haspopup='true'
-										aria-expanded='false'
 									></img>
 									<div
 										className='dropdown-menu'
