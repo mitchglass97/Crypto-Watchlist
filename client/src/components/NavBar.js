@@ -51,10 +51,10 @@ const NavBar = (props) => {
 								<a className='nav-link mb-3'>{username}</a>
 							</li>
 							<li className='nav-item'>
-								<div class='dropdown'>
+								<div className='dropdown'>
 									<img
 										src={avatar}
-										class='dropdown-toggle'
+										className='dropdown-toggle'
 										type='button'
 										id='dropdownMenuButton'
 										data-toggle='dropdown'
@@ -62,11 +62,11 @@ const NavBar = (props) => {
 										aria-expanded='false'
 									></img>
 									<div
-										class='dropdown-menu'
+										className='dropdown-menu'
 										aria-labelledby='dropdownMenuButton'
 									>
 										<a
-											class='dropdown-item'
+											className='dropdown-item'
 											onClick={(e) => logout(e)}
 										>
 											Log Out

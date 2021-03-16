@@ -225,8 +225,12 @@ a:hover {
 	background-color: white;
 	min-width: 700px;
 	width: 75vw;
+	border-radius: 15px;
 }
 
+th {
+	border-top: none !important;
+}
 #navbar-user-text {
 	margin-bottom: 20px;
 }
@@ -290,4 +294,8 @@ tr th {
 	width: 280px;
 	height: 80px !important;
 	border-radius: 15px;
+}
+
+.grey-text {
+	color: grey;
 }

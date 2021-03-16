@@ -3,8 +3,9 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Dashboard = ({ setAuth }) => {
-	const [watchlist, setWatchlist] = useState([]);
+	const [watchlist, setWatchlist] = useState("undefined");
 	const [watchlistLoaded, setWatchlistLoaded] = useState(false);
+	const [watchlistEmpty, setWatchlistEmpty] = useState(false);
 	const [username, setUsername] = useState("");
 	const [coinName, setCoinName] = useState("");
 	const [editMode, setEditMode] = useState(false);
@@ -19,12 +20,23 @@ const Dashboard = ({ setAuth }) => {
 	// Using conditional render, don't display the watchlist on the page
 	// until the boolean is true.
 	useEffect(() => {
+		console.log("yeet");
 		try {
-			if (watchlist[0].coin_name != "undefined") {
+			if (watchlist != "undefined") {
+				console.log(watchlist);
 				setWatchlistLoaded(true);
+				if (watchlist.length == 0) {
+					setWatchlistEmpty(true);
+				} else {
+					setWatchlistEmpty(false);
+				}
+			} else {
+				setWatchlistLoaded(false);
+				setWatchlistEmpty(false);
 			}
 		} catch (error) {
 			console.log("Fetching watchlist & prices...");
+			console.log(error);
 			// can put loader stuff here
 		}
 	}, [watchlist]);
@@ -36,7 +48,10 @@ const Dashboard = ({ setAuth }) => {
 			headers: { token: localStorage.token },
 		});
 		const parseResponse = await response.json();
-		setWatchlist(parseResponse);
+		console.log(parseResponse);
+		console.log("test");
+		let test = await setWatchlist(parseResponse);
+		//console.log(watchlist);
 	};
 
 	// Fetch username from server
@@ -192,6 +207,61 @@ const Dashboard = ({ setAuth }) => {
 										</tr>
 									);
 								})}
+							{!watchlistLoaded && (
+								<tr>
+									<td>
+										<div
+											className='spinner-border text-dark'
+											role='status'
+										>
+											<span className='sr-only'>
+												Loading...
+											</span>
+										</div>
+									</td>
+									<td>
+										<div
+											className='spinner-border text-dark'
+											role='status'
+										>
+											<span className='sr-only'>
+												Loading...
+											</span>
+										</div>
+									</td>
+									<td>
+										<div
+											className='spinner-border text-dark'
+											role='status'
+										>
+											<span className='sr-only'>
+												Loading...
+											</span>
+										</div>
+									</td>
+									<td>
+										<div
+											className='spinner-border text-dark'
+											role='status'
+										>
+											<span className='sr-only'>
+												Loading...
+											</span>
+										</div>
+									</td>
+								</tr>
+							)}
+							{watchlistEmpty && (
+								<tr>
+									<td class='grey-text'>
+										Your watchlist is empty. Try adding a
+										coin!
+									</td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+							)}
 						</tbody>
 					</table>
 				</div>
