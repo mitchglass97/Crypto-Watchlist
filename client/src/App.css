@@ -299,3 +299,11 @@ tr th {
 .grey-text {
 	color: grey;
 }
+
+.green {
+	color: #28965a;
+}
+
+.red {
+	color: #dd5a5a;
+}

@@ -119,6 +119,14 @@ const Dashboard = ({ setAuth }) => {
 		setAuth(false);
 	};
 
+	const getClass = (props) => {
+		if (props.priceChange > 0) {
+			return "green";
+		} else if (props.priceChange < 0) {
+			return "red";
+		}
+	};
+
 	let editButtonText = "";
 	if (!editMode) {
 		editButtonText = "Edit Watchlist";
@@ -178,17 +186,37 @@ const Dashboard = ({ setAuth }) => {
 											</td>
 											<td>
 												${" "}
-												{
-													watchlist[idx]
-														.priceChange
-												}
+												<span
+													className={getClass(
+														watchlist[
+															idx
+														]
+													)}
+												>
+													{
+														watchlist[
+															idx
+														]
+															.priceChange
+													}
+												</span>
 											</td>
 											<td>
-												{
-													watchlist[idx]
-														.priceChangePercent
-												}{" "}
-												%
+												<span
+													className={getClass(
+														watchlist[
+															idx
+														]
+													)}
+												>
+													{
+														watchlist[
+															idx
+														]
+															.priceChangePercent
+													}{" "}
+													%
+												</span>
 											</td>
 											{editMode && (
 												<td>
