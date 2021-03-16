@@ -2,6 +2,8 @@
 
 ![Landing Page](https://user-images.githubusercontent.com/52224377/110902002-cb416f80-82ca-11eb-9972-480ee2dee246.png)
 
+[Live Link](https://crypto-watchlist.herokuapp.com/)
+
 Crypto Watchlist is a full-stack web app where users can create and edit a watchlist of cryptos.
 
 The price and change in price of each crypto is displayed on a table on the dashboard.
