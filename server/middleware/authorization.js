@@ -14,7 +14,7 @@ module.exports = async (req, res, next) => {
 			return res.status(403).json("NOT AUTHORIZED");
 		}
 
-		console.log("yes token");
+		console.log("yes token!");
 
 		// If there is a token, verify the token
 		const payload = jwt.verify(jwtToken, process.env.JWT_SECRET_KEY);
