@@ -1,24 +1,24 @@
 {
-  "name": "Crypto-Watchlist",
-  "version": "1.0.0",
-  "description": "In this repository I intend to create a Crypto Watchlist web app. Below are mockups that I created in Figma.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run install-client && npm run build",
-    "start": "cd server && node index",
-    "client": "cd client && npm start"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mitchglass97/Crypto-Watchlist.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mitchglass97/Crypto-Watchlist/issues"
-  },
-  "homepage": "https://github.com/mitchglass97/Crypto-Watchlist#readme"
+	"name": "Crypto-Watchlist",
+	"version": "1.0.0",
+	"description": "In this repository I intend to create a Crypto Watchlist web app. Below are mockups that I created in Figma.",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build": "cd client && npm install && npm run build",
+		"heroku-postbuild": "npm run install-client && npm run build",
+		"start": "cd server && node index",
+		"client": "cd client && npm start"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/mitchglass97/Crypto-Watchlist.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/mitchglass97/Crypto-Watchlist/issues"
+	},
+	"homepage": "https://github.com/mitchglass97/Crypto-Watchlist#readme"
 }
