@@ -48,6 +48,7 @@ The above would be the core functionality. Ideas to add after are:
 # About
 
 The structure of the PostgreSQL database
+
 ![Database](https://user-images.githubusercontent.com/52224377/111240786-e31a3b80-85c9-11eb-9c29-30bf8dbeac87.PNG)
 
 # Running Locally
