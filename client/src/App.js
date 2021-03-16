@@ -14,6 +14,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 function App() {
 	const baseURL = process.env.REACT_APP_BASE_URL;
+	console.log(baseURL);
 	// by default, user is not authenticated
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -28,9 +29,13 @@ function App() {
 				headers: { token: localStorage.token },
 			});
 
+			console.log(checkIfTokenVerified);
+
 			if (checkIfTokenVerified.ok) {
+				console.log("setting true");
 				setAuth(true);
 			} else {
+				console.log("setting false");
 				setAuth(false);
 			}
 		} catch (error) {
