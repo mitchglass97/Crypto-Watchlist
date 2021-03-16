@@ -113,65 +113,89 @@ const Dashboard = ({ setAuth }) => {
 
 	return (
 		<Fragment>
-			<h3>Dashboard</h3>
-			<p>hello {username}!</p>
-			<form onSubmit={addCoinButton}>
-				<input
-					type='text'
-					name='coinName'
-					placeholder='Search for a coin'
-					className='form-control my-3'
-					value={coinName}
-					onChange={(e) => onChangeForm(e)}
-				></input>
-				<button className='btn btn-success btn-block form-control my-3'>
-					Add Coin to Watchlist
+			<div
+				className='container d-flex flex-column justify-content-center align-items-center'
+				id='dashboard-container'
+			>
+				<form onSubmit={addCoinButton} className='d-flex mb-3' id='coin-input-form'>
+					<input
+						type='text'
+						name='coinName'
+						placeholder='Search for a coin'
+						className='form-control my-3 w-75 mr-4'
+						value={coinName}
+						onChange={(e) => onChangeForm(e)}
+					></input>
+					<button
+						className='btn btn-light btn-block form-control my-3 w-25'
+						id='dashboard-add-button'
+					>
+						Add
+					</button>
+				</form>
+				<button className='btn btn-primary' onClick={(e) => editButton(e)}>
+					{editButtonText}
 				</button>
-			</form>
-			<button className='btn btn-danger' onClick={(e) => logout(e)}>
-				Logout
-			</button>
-			<button className='btn btn-primary' onClick={(e) => editButton(e)}>
-				{editButtonText}
-			</button>
-			<table className='table'>
-				<thead>
-					<tr>
-						<th scope='col'>Coin Name</th>
-						<th scope='col'>Price</th>
-						<th scope='col'>Change($)</th>
-						<th scope='col'>Change(%)</th>
-						{editMode && <th scope='col'>Action</th>}
-					</tr>
-				</thead>
-				<tbody>
-					{watchlistLoaded &&
-						watchlist.map((val, idx) => {
-							return (
-								<tr key={idx}>
-									<th scope='row'>{watchlist[idx].coin_name}</th>
-									<td>$ {watchlist[idx].price}</td>
-									<td>$ {watchlist[idx].priceChange}</td>
-									<td>{watchlist[idx].priceChangePercent} %</td>
-									{editMode && (
-										<td>
-											<button
-												className='btn btn-danger'
-												onClick={() =>
-													deleteCoinFromWatchlist(
-														idx
-													)
+				<div className='table-responsive-md'>
+					<table className='table' id='dashboard-table'>
+						<thead>
+							<tr>
+								<th scope='col'>Coin Name</th>
+								<th scope='col'>Price</th>
+								<th scope='col'>Change($)</th>
+								<th scope='col'>Change(%)</th>
+								{editMode && <th scope='col'>Remove</th>}
+							</tr>
+						</thead>
+						<tbody>
+							{watchlistLoaded &&
+								watchlist.map((val, idx) => {
+									return (
+										<tr key={idx}>
+											<td scope='row'>
+												{
+													watchlist[idx]
+														.coin_name
 												}
-											>
-												Remove
-											</button>
-										</td>
-									)}
-								</tr>
-							);
-						})}
-				</tbody>
-			</table>
+											</td>
+											<td>
+												$ {watchlist[idx].price}
+											</td>
+											<td>
+												${" "}
+												{
+													watchlist[idx]
+														.priceChange
+												}
+											</td>
+											<td>
+												{
+													watchlist[idx]
+														.priceChangePercent
+												}{" "}
+												%
+											</td>
+											{editMode && (
+												<td>
+													<button
+														className='btn btn-danger'
+														onClick={() =>
+															deleteCoinFromWatchlist(
+																idx
+															)
+														}
+													>
+														X
+													</button>
+												</td>
+											)}
+										</tr>
+									);
+								})}
+						</tbody>
+					</table>
+				</div>
+			</div>
 		</Fragment>
 	);
 };

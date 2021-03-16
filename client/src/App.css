@@ -1,0 +1,293 @@
+a {
+	color: white;
+	font-weight: 400;
+	font-size: 20px;
+}
+
+a:hover {
+	color: none !;
+}
+
+#login-container {
+	margin-top: 150px;
+	border-radius: 20px;
+	height: 400px;
+	min-width: 275px;
+	box-shadow: 0px 0px 40px 2px rgba(0, 0, 0, 0.35);
+}
+
+#login-container input {
+	width: 83%;
+}
+
+#navbar-brand-text {
+	font-weight: 900;
+	font-size: 22px;
+	padding-left: 10px;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+	color: white !important;
+}
+
+#footer,
+#header {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#footer {
+	padding-bottom: 50px;
+	background: linear-gradient(90deg, #5e71e4 0%, #825ee4 100%);
+	height: 20px;
+}
+
+#header {
+	background: linear-gradient(90deg, #5e71e4 0%, #825ee4 100%);
+	border: solid 1px grey;
+}
+
+#avatar {
+	width: 30px !important;
+}
+
+.login-button {
+	width: 120px;
+	background-color: #5e72e4 !important;
+	border: none;
+	font-weight: 600;
+}
+
+#navbar-signup-button {
+	width: 100px;
+	background-color: white !important;
+	color: #825ee4 !important;
+	border: none;
+	font-weight: 600;
+	border-radius: 10px;
+	height: 45px;
+	margin-bottom: 20px;
+}
+
+#navbar-signup-button a {
+	font-weight: 600;
+	font-size: 18px;
+	color: #825ee4 !important;
+	text-decoration: none;
+}
+
+#navbar-login-text {
+	margin-right: 20px;
+	margin-left: 2px;
+	margin-bottom: 20px;
+}
+
+#navbarResponsive {
+	width: 100vw !important;
+	margin-top: 10px;
+}
+
+#list-last-item {
+	margin-left: 20px;
+}
+
+@media (min-width: 950px) {
+	#header {
+		width: 100%;
+		padding-left: 20%;
+		padding-right: 20%;
+	}
+	#login-container {
+		width: 450px !important;
+	}
+}
+
+@media (min-width: 768px) {
+	#footer {
+		padding-bottom: 50px;
+		background: linear-gradient(90deg, #5e71e4 0%, #825ee4 100%);
+		width: 100vw !important;
+		padding-left: 20vw;
+		padding-right: 20vw;
+		height: 20px;
+	}
+
+	#footer-content {
+		padding-top: 40px;
+	}
+}
+
+@media (max-width: 768px) {
+	#footer .navbar-brand,
+	#footer a {
+		font-size: 16px;
+	}
+	#list-last-item {
+		margin-left: 20px;
+	}
+	#login-container {
+		width: 375px !important;
+	}
+	#login-container input {
+		width: 65%;
+	}
+	#landing-page-image {
+		margin-bottom: 100px;
+		width: 120% !important;
+	}
+}
+
+@media (max-height: 650px) {
+	#footer {
+		position: relative;
+		width: 100w !important;
+	}
+}
+
+@media (max-width: 450px) {
+	#navbar-brand-text {
+		font-size: 13px;
+	}
+	#login-container {
+		height: 350px;
+		width: 85% !important;
+	}
+	#footer .navbar-brand,
+	#footer a {
+		font-size: 13px;
+	}
+	#landing-page-image {
+		margin-bottom: 100px;
+		width: 120% !important;
+	}
+}
+
+#landing-page-container {
+	margin-top: 120px;
+	margin-bottom: 100px;
+	height: 500px !important;
+}
+
+.Toastify__toast--error {
+	background: #dd5a5a !important;
+}
+
+.Toastify__progress-bar {
+	background-color: #dce0f8 !important;
+}
+
+#landing-page-image {
+	width: 140%;
+	margin-right: 50px;
+}
+
+#landing-text {
+	color: white;
+}
+
+#landing-text h3 {
+	margin-top: 50px;
+	font-weight: 800;
+	font-size: 50px;
+}
+
+#landing-text h2 {
+	margin-top: 50px;
+	font-weight: 300;
+	color: #e5e5e5;
+}
+
+#landing-text button {
+	background-color: white !important;
+	border: none;
+	height: 60px;
+	margin-top: 50px;
+	margin-bottom: 25px;
+	border-radius: 15px;
+	box-shadow: 0px 0px 30px 2px rgba(0, 0, 0, 0.33);
+}
+
+#landing-text button a {
+	color: #825ee4;
+	font-weight: 600;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+#dashboard-container {
+	margin-top: 150px;
+	margin-bottom: 100px;
+}
+
+#dashboard-table {
+	margin-top: 50px;
+	background-color: white;
+	min-width: 700px;
+	width: 75vw;
+}
+
+#navbar-user-text {
+	margin-bottom: 20px;
+}
+
+tr {
+	height: 65px;
+}
+
+#dashboard-add-button {
+	color: #825ee4 !important;
+	font-weight: 600;
+	border-radius: 10px;
+}
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active {
+	background-color: #172b4d !important;
+	border: none !important;
+	color: white !important;
+	font-weight: 600;
+	width: 150px;
+	height: 50px;
+	border-radius: 15px;
+}
+
+.btn-danger,
+.btn-danger:hover,
+.btn-danger:active {
+	background-color: #dd5a5a !important;
+	border: none !important;
+}
+
+#coin-input-form {
+	min-width: 300px;
+	width: 40%;
+}
+
+table {
+	text-align: center;
+}
+
+tr th {
+	color: #7081e7;
+}
+
+#dropdownMenuButton {
+	margin-left: 10px;
+	width: 40px !important;
+}
+
+.dropdown-menu {
+	cursor: pointer;
+}
+
+#free-account-button {
+	background-color: #172b4d !important;
+	border: none !important;
+	color: white !important;
+	font-weight: 600;
+	width: 280px;
+	height: 80px !important;
+	border-radius: 15px;
+}

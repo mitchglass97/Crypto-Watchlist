@@ -35,7 +35,8 @@ const Login = ({ setAuth }) => {
 				localStorage.setItem("token", parseResponse.token);
 				setAuth(true);
 			} else {
-				toast.error(parseResponse.message);
+				console.log("yea");
+				toast.error("Error: " + parseResponse.message);
 			}
 		} catch (error) {
 			console.log(error);
@@ -44,29 +45,32 @@ const Login = ({ setAuth }) => {
 
 	return (
 		<Fragment>
-			<h3 className='text-center my-5'>Login</h3>
-			<form onSubmit={onSubmitForm}>
-				<input
-					type='text'
-					name='username'
-					placeholder='username'
-					className='form-control my-3'
-					value={username}
-					onChange={(e) => onChangeForm(e)}
-				></input>
-				<input
-					type='password'
-					name='password'
-					placeholder='password'
-					className='form-control my-3'
-					value={password}
-					onChange={(e) => onChangeForm(e)}
-				></input>
-				<button className='btn btn-success btn-block form-control my-3'>Login</button>
-			</form>
-			<Link to='/login'>Log In</Link>
-			<br />
-			<Link to='/register'>Sign Up</Link>
+			<div
+				className='container w-50 d-flex flex-column align-items-center justify-content-center bg-white'
+				id='login-container'
+			>
+				<form onSubmit={onSubmitForm} className='d-flex flex-column align-items-center'>
+					<input
+						type='text'
+						name='username'
+						placeholder='username'
+						className='form-control my-3'
+						value={username}
+						onChange={(e) => onChangeForm(e)}
+					></input>
+					<input
+						type='password'
+						name='password'
+						placeholder='password'
+						className='form-control my-3'
+						value={password}
+						onChange={(e) => onChangeForm(e)}
+					></input>
+					<button className='btn btn-success form-control my-3 login-button'>
+						Log In
+					</button>
+				</form>
+			</div>
 		</Fragment>
 	);
 };

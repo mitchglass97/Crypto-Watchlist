@@ -35,10 +35,10 @@ The road map for this project currently looks something like:
 - [x] add a "Remove" button next to each coin in the table
 - [x] add an Edit Watchlist button which toggles the table column with the "Remove" buttons
 - [x] display price data from Binance API in the table
-- [ ] make it all look nice (bare-bones CSS up until this point)
+- [x] make it all look nice (bare-bones CSS up until this point)
 - [ ] make the coin input a [Material-UI Autocomplete component](https://material-ui.com/components/autocomplete/)
 - [ ] set color of table entries for price change and percent change based on positive or negative (green or red?)
-- [ ] Landing Page
+- [x] Landing Page
 
 The above would be the core functionality. Ideas to add after are:
 

@@ -1,14 +1,16 @@
 import "./App.css";
 import { Fragment, useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 // Components
 import Dashboard from "./components/Dashboard";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import LandingPage from "./components/LandingPage";
+import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
 	// by default, user is not authenticated
@@ -42,8 +44,9 @@ function App() {
 	return (
 		<Fragment>
 			<BrowserRouter>
-				<div className='container'>
-					<ToastContainer />
+				<ToastContainer />
+				<div className='container' id='master-container'>
+					<NavBar authState={isAuthenticated} setAuth={setAuth} />
 					<Switch>
 						<Route
 							exact
@@ -90,6 +93,7 @@ function App() {
 							}
 						/>
 					</Switch>
+					<Footer />
 				</div>
 			</BrowserRouter>
 		</Fragment>
