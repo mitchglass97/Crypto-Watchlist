@@ -51,6 +51,8 @@ The structure of the PostgreSQL database
 
 ![Database](https://user-images.githubusercontent.com/52224377/111240786-e31a3b80-85c9-11eb-9c29-30bf8dbeac87.PNG)
 
+user_password is a password hash generated using bcrypt
+
 # Running Locally
 
 This app requires an .env file with the following variables to be set up:
