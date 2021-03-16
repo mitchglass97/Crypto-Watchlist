@@ -1,16 +1,16 @@
 # Welcome
 
-In this repository I intend to create a Crypto Watchlist web app. Below are mockups that I created in Figma.
-
 ![Landing Page](https://user-images.githubusercontent.com/52224377/110902002-cb416f80-82ca-11eb-9972-480ee2dee246.png)
 
-![Login Page](https://user-images.githubusercontent.com/52224377/110894623-cde99800-82bd-11eb-8b3a-b02c25cd0d12.png)
+Crypto Watchlist is a full-stack web app where users can create and edit a watchlist of cryptos.
 
-![Home Page](https://user-images.githubusercontent.com/52224377/110894627-d0e48880-82bd-11eb-89dc-50163993afb5.png)
+The price and change in price of each crypto is displayed on a table on the dashboard.
 
-![Home Page (Edit Mode)](https://user-images.githubusercontent.com/52224377/110894630-d17d1f00-82bd-11eb-9461-dd31596bb012.png)
+Each user's watchlist is linked to their account so it will display and persist on any device.
 
-This project will use:
+This app is currently deployed in Heroku but can be ran locally as well. Please see the Setup section below for more info.
+
+This project uses:
 
 - **PostgreSQL**, database
 - **NodeJS** and **Express**, back-end
@@ -37,25 +37,27 @@ The road map for this project currently looks something like:
 - [x] display price data from Binance API in the table
 - [x] make it all look nice (bare-bones CSS up until this point)
 - [ ] make the coin input a [Material-UI Autocomplete component](https://material-ui.com/components/autocomplete/)
-- [ ] set color of table entries for price change and percent change based on positive or negative (green or red?)
+- [x] set color of table entries for price change and percent change based on positive or negative (green or red?)
 - [x] Landing Page
 
-The above would be the core functionality. Ideas to add after are:
+The above is the core functionality. Ideas to add after are:
 
 - [ ] The ability to click on each coin in watchlist to get a page dedicated to that coin with things like RSS twitter feed for the $CoinSymbol and a graph of the historical coin price
 - [ ] Add an icon for each coin using the [Crypto Icons API](https://cryptoicons.org/)
 
 # About
 
-The structure of the PostgreSQL database
+The structure of the PostgreSQL database (user_password is a password hash generated using bcrypt):
 
 ![Database](https://user-images.githubusercontent.com/52224377/111240786-e31a3b80-85c9-11eb-9c29-30bf8dbeac87.PNG)
 
-user_password is a password hash generated using bcrypt
+# Setup
 
-# Running Locally
+## Running Locally
 
-This app requires an .env file with the following variables to be set up:
+Running locally requires two .env files.
+
+The first .env file must be in the server folder and must contain the following variables:
 
 ```
 PORT = Port to run the app on (e.g. 5000 for localhost5000)
@@ -64,18 +66,24 @@ DB_PASSWORD = Postgres password
 DB_HOST = Postgres host (e.g. localhost)
 DB_PORT = Postgres port, usually 5432 or 5433
 DB_DATABASE = Postgres database
-BASE_URL
+JWT_SECRET_KEY = Key used to generate JWT token. Can be any arbitrary string
+```
+
+The second .env file must be in the client folder and must contain the following variables:
+
+```
+REACT_APP_BASE_URL = e.g. http://localhost:5000
 ```
 
 To run the project locally:
 
-In the server folder, run
+In the main folder, run
 
 ```
 npm install // first-time setup
 ```
 
-followed by one of the following commands:
+In the server folder, run one of the following commands:
 
 ```
 npm start // production
@@ -85,11 +93,31 @@ npm run dev // development or testing
 Then, in the client folder, run
 
 ```
-npm install // first-time setup
-```
-
-followed by
-
-```
 npm start
+```
+
+## Deploying to Heroku
+
+Running in Heroku requires the following Config Vars to be set up:
+
+```
+JWT_SECRET_KEY = Key used to generate JWT token. Can be any arbitrary string
+NODE_ENV = production (must be set exactly to the string "production")
+REACT_APP_BASE_URL = e.g https://crypto-watchlist.herokuapp.com
+```
+
+Additionally, a Heroku Postgres database must be added to the Heroku app and following two tables must be created:
+
+```
+CREATE TABLE users(
+    user_id SERIAL PRIMARY KEY NOT NULL,
+    user_name VARCHAR(255) NOT NULL,
+    user_password VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE watchlist(
+    id SERIAL PRIMARY KEY NOT NULL,
+    user_name VARCHAR(255) NOT NULL,
+    coin_name VARCHAR(20) NOT NULL
+);
 ```
