@@ -23,6 +23,14 @@ require("dotenv").config(); // gives access to .env variables
 app.use(express.json()); // gives access to req.body
 app.use(cors());
 
+// ROUTES //
+
+// Register and Login Routes
+app.use("/auth", require("./routes/jwtAuth"));
+
+// Dashboard Route
+app.use("/dashboard", require("./routes/dashboard"));
+
 // Heroku
 if (process.env.NODE_ENV === "production") {
 	app.use(express.static("../client/build"));
@@ -31,14 +39,6 @@ if (process.env.NODE_ENV === "production") {
 		res.sendFile(path.resolve("/app/client/build/index.html"));
 	});
 }
-
-// ROUTES //
-
-// Register and Login Routes
-app.use("/auth", require("./routes/jwtAuth"));
-
-// Dashboard Route
-app.use("/dashboard", require("./routes/dashboard"));
 
 // Start server by listening on a designated port
 const port = process.env.PORT;
