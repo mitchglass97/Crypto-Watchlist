@@ -3,6 +3,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Dashboard = ({ setAuth }) => {
+	const baseURL = process.env.REACT_APP_BASE_URL;
+
 	const [watchlist, setWatchlist] = useState("undefined");
 	const [watchlistLoaded, setWatchlistLoaded] = useState(false);
 	const [watchlistEmpty, setWatchlistEmpty] = useState(false);
@@ -20,7 +22,6 @@ const Dashboard = ({ setAuth }) => {
 	// Using conditional render, don't display the watchlist on the page
 	// until the boolean is true.
 	useEffect(() => {
-		console.log("yeet");
 		try {
 			if (watchlist != "undefined") {
 				console.log(watchlist);
@@ -43,20 +44,18 @@ const Dashboard = ({ setAuth }) => {
 
 	// Fetch watchlist from server
 	const fetchWatchlist = async () => {
-		const response = await fetch("http://localhost:5000/dashboard/watchlist", {
+		const response = await fetch(baseURL + "/dashboard/watchlist", {
 			method: "GET",
 			headers: { token: localStorage.token },
 		});
 		const parseResponse = await response.json();
-		console.log(parseResponse);
-		console.log("test");
 		let test = await setWatchlist(parseResponse);
 		//console.log(watchlist);
 	};
 
 	// Fetch username from server
 	const fetchUsername = async () => {
-		const response = await fetch("http://localhost:5000/dashboard/username", {
+		const response = await fetch(baseURL + "/dashboard/username", {
 			method: "GET",
 			headers: { token: localStorage.token },
 		});
@@ -78,7 +77,7 @@ const Dashboard = ({ setAuth }) => {
 	const addCoinButton = async (e) => {
 		e.preventDefault();
 		const body = { coinName };
-		const addCoin = await fetch("http://localhost:5000/dashboard/addcoin", {
+		const addCoin = await fetch(baseURL + "/dashboard/addcoin", {
 			method: "POST",
 			headers: { "Content-Type": "application/json", token: localStorage.token },
 			body: JSON.stringify(body),
@@ -103,7 +102,7 @@ const Dashboard = ({ setAuth }) => {
 		const coinToDelete = watchlist[idx].coin_name;
 		const body = { coinName: coinToDelete };
 
-		const deleteCoin = await fetch("http://localhost:5000/dashboard/deletecoin", {
+		const deleteCoin = await fetch(baseURL + "/dashboard/deletecoin", {
 			method: "POST",
 			headers: { "Content-Type": "application/json", token: localStorage.token },
 			body: JSON.stringify(body),
@@ -281,7 +280,7 @@ const Dashboard = ({ setAuth }) => {
 							)}
 							{watchlistEmpty && (
 								<tr>
-									<td class='grey-text'>
+									<td className='grey-text'>
 										Your watchlist is empty. Try adding a
 										coin!
 									</td>

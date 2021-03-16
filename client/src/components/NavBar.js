@@ -3,6 +3,8 @@ import logo from "../assets/logo.png";
 import avatar from "../assets/avatar.png";
 
 const NavBar = (props) => {
+	const baseURL = process.env.REACT_APP_BASE_URL;
+
 	const [username, setUsername] = useState("");
 
 	const logout = (e) => {
@@ -14,7 +16,7 @@ const NavBar = (props) => {
 
 	// Fetch username from server
 	const fetchUsername = async () => {
-		const response = await fetch("http://localhost:5000/dashboard/username", {
+		const response = await fetch(baseURL + "/dashboard/username", {
 			method: "GET",
 			headers: { token: localStorage.token },
 		});

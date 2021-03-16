@@ -85,6 +85,7 @@ a:hover {
 
 #navbarResponsive {
 	width: 100vw !important;
+	padding-top: 13px;
 	margin-top: 10px;
 }
 

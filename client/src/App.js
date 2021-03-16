@@ -13,6 +13,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
+	const baseURL = process.env.REACT_APP_BASE_URL;
 	// by default, user is not authenticated
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -22,7 +23,7 @@ function App() {
 
 	const isAuth = async () => {
 		try {
-			const checkIfTokenVerified = await fetch("http://localhost:5000/auth/is-verify", {
+			const checkIfTokenVerified = await fetch(baseURL + "/auth/is-verify", {
 				method: "GET",
 				headers: { token: localStorage.token },
 			});

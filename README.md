@@ -64,6 +64,7 @@ DB_PASSWORD = Postgres password
 DB_HOST = Postgres host (e.g. localhost)
 DB_PORT = Postgres port, usually 5432 or 5433
 DB_DATABASE = Postgres database
+BASE_URL
 ```
 
 To run the project locally:

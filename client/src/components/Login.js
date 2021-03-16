@@ -4,6 +4,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Login = ({ setAuth }) => {
+	const baseURL = process.env.REACT_APP_BASE_URL;
+
 	const [inputs, setInputs] = useState({
 		username: "",
 		password: "",
@@ -21,7 +23,7 @@ const Login = ({ setAuth }) => {
 		try {
 			const body = { username, password };
 
-			const logInUser = await fetch("http://localhost:5000/auth/login", {
+			const logInUser = await fetch(baseURL + "/auth/login", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify(body),
