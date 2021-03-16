@@ -1,4 +1,4 @@
-# About
+# Welcome
 
 In this repository I intend to create a Crypto Watchlist web app. Below are mockups that I created in Figma.
 
@@ -45,9 +45,14 @@ The above would be the core functionality. Ideas to add after are:
 - [ ] The ability to click on each coin in watchlist to get a page dedicated to that coin with things like RSS twitter feed for the $CoinSymbol and a graph of the historical coin price
 - [ ] Add an icon for each coin using the [Crypto Icons API](https://cryptoicons.org/)
 
-# Setup
+# About
 
-This app requires an .env file with the following variables
+The structure of the PostgreSQL database
+![Database](https://user-images.githubusercontent.com/52224377/111240786-e31a3b80-85c9-11eb-9c29-30bf8dbeac87.PNG)
+
+# Running Locally
+
+This app requires an .env file with the following variables to be set up:
 
 ```
 PORT = Port to run the app on (e.g. 5000 for localhost5000)
@@ -56,5 +61,31 @@ DB_PASSWORD = Postgres password
 DB_HOST = Postgres host (e.g. localhost)
 DB_PORT = Postgres port, usually 5432 or 5433
 DB_DATABASE = Postgres database
-JWT_SECRET_KEY = Secret key used to sign JWT tokens. Can be any arbitrary string.
+```
+
+To run the project locally:
+
+In the server folder, run
+
+```
+npm install // first-time setup
+```
+
+followed by one of the following commands:
+
+```
+npm start // production
+npm run dev // development or testing
+```
+
+Then, in the client folder, run
+
+```
+npm install // first-time setup
+```
+
+followed by
+
+```
+npm start
 ```

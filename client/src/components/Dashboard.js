@@ -24,7 +24,8 @@ const Dashboard = ({ setAuth }) => {
 				setWatchlistLoaded(true);
 			}
 		} catch (error) {
-			console.log("Fetching watchlist...");
+			console.log("Fetching watchlist & prices...");
+			// can put loader stuff here
 		}
 	}, [watchlist]);
 
@@ -35,7 +36,6 @@ const Dashboard = ({ setAuth }) => {
 			headers: { token: localStorage.token },
 		});
 		const parseResponse = await response.json();
-		console.log(parseResponse);
 		setWatchlist(parseResponse);
 	};
 
@@ -54,13 +54,13 @@ const Dashboard = ({ setAuth }) => {
 		setCoinName(e.target.value.toUpperCase());
 	};
 
-	const editModeButton = (e) => {
+	const editButton = (e) => {
 		setEditMode(!editMode);
 	};
 
 	// When user submits Add a Coin form
 	// Possible errors: coin name not supported by binance, coin already in list
-	const onSubmitForm = async (e) => {
+	const addCoinButton = async (e) => {
 		e.preventDefault();
 		const body = { coinName };
 		const addCoin = await fetch("http://localhost:5000/dashboard/addcoin", {
@@ -69,7 +69,6 @@ const Dashboard = ({ setAuth }) => {
 			body: JSON.stringify(body),
 		});
 		const parseResponse = await addCoin.json();
-		console.log(parseResponse.error);
 		if (parseResponse.error == "001") {
 			toast.error("Error: Invalid coin name or coin not supported by the Binance API.", {
 				pauseOnHover: false,
@@ -105,15 +104,18 @@ const Dashboard = ({ setAuth }) => {
 		setAuth(false);
 	};
 
-	const myTest = async (idx) => {
-		return idx;
-	};
+	let editButtonText = "";
+	if (!editMode) {
+		editButtonText = "Edit Watchlist";
+	} else {
+		editButtonText = "Finish Editing";
+	}
 
 	return (
 		<Fragment>
 			<h3>Dashboard</h3>
 			<p>hello {username}!</p>
-			<form onSubmit={onSubmitForm}>
+			<form onSubmit={addCoinButton}>
 				<input
 					type='text'
 					name='coinName'
@@ -129,8 +131,8 @@ const Dashboard = ({ setAuth }) => {
 			<button className='btn btn-danger' onClick={(e) => logout(e)}>
 				Logout
 			</button>
-			<button className='btn btn-primary' onClick={(e) => editModeButton(e)}>
-				Edit Watchlist
+			<button className='btn btn-primary' onClick={(e) => editButton(e)}>
+				{editButtonText}
 			</button>
 			<table className='table'>
 				<thead>
@@ -143,7 +145,7 @@ const Dashboard = ({ setAuth }) => {
 					</tr>
 				</thead>
 				<tbody>
-					{watchlistLoaded == true &&
+					{watchlistLoaded &&
 						watchlist.map((val, idx) => {
 							return (
 								<tr key={idx}>

@@ -16,9 +16,6 @@ function App() {
 
 	const setAuth = (boolean) => {
 		setIsAuthenticated(boolean);
-		if (boolean) {
-			console.log("hey");
-		}
 	};
 
 	const isAuth = async () => {
