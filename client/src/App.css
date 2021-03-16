@@ -52,6 +52,12 @@ a:hover {
 	width: 30px !important;
 }
 
+.dropdown-toggle:active,
+.open .dropdown-toggle {
+	width: 30px !important;
+	background: none !important;
+}
+
 .login-button {
 	width: 120px;
 	background-color: #5e72e4 !important;
