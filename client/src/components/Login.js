@@ -37,7 +37,6 @@ const Login = ({ setAuth }) => {
 				localStorage.setItem("token", parseResponse.token);
 				setAuth(true);
 			} else {
-				console.log("yea");
 				toast.error("Error: " + parseResponse.message);
 			}
 		} catch (error) {

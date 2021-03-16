@@ -24,7 +24,6 @@ const Dashboard = ({ setAuth }) => {
 	useEffect(() => {
 		try {
 			if (watchlist != "undefined") {
-				console.log(watchlist);
 				setWatchlistLoaded(true);
 				if (watchlist.length == 0) {
 					setWatchlistEmpty(true);
@@ -49,8 +48,7 @@ const Dashboard = ({ setAuth }) => {
 			headers: { token: localStorage.token },
 		});
 		const parseResponse = await response.json();
-		let test = await setWatchlist(parseResponse);
-		//console.log(watchlist);
+		setWatchlist(parseResponse);
 	};
 
 	// Fetch username from server

@@ -18,11 +18,8 @@ const Footer = () => {
 						</a>
 					</li>
 					<li className='nav-item' id='list-last-item'>
-						<a
-							className='nav-link'
-							href='https://github.com/mitchglass97/Crypto-Watchlist'
-						>
-							GitHub Repo
+						<a className='nav-link' href='https://mitchglass.dev/'>
+							Portfolio
 						</a>
 					</li>
 				</ul>
