@@ -16,15 +16,21 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const path = require("path");
 require("dotenv").config(); // gives access to .env variables
 
 // Middleware
 app.use(express.json()); // gives access to req.body
 app.use(cors());
 
-// Heroku Config Var
+// Heroku
 if (process.env.NODE_ENV === "production") {
 	app.use(express.static("../client/build"));
+
+	// Express serve up index.html file if it doesn't recognize route
+	app.get("*", (req, res) => {
+		res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+	});
 }
 
 // ROUTES //
