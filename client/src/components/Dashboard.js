@@ -82,9 +82,12 @@ const Dashboard = ({ setAuth }) => {
 		});
 		const parseResponse = await addCoin.json();
 		if (parseResponse.error == "001") {
-			toast.error("Error: Invalid coin name or coin not supported by the Binance API.", {
-				pauseOnHover: false,
-			});
+			toast.error(
+				"Error: Invalid coin symbol or coin not supported by the Binance API. Input must be symbol (e.g. BTC not BITCOIN)",
+				{
+					pauseOnHover: false,
+				}
+			);
 			return;
 		} else if (parseResponse.error == "002") {
 			toast.error(`Error: $${coinName} is already on your watchlist.`, { pauseOnHover: false });
