@@ -22,6 +22,11 @@ require("dotenv").config(); // gives access to .env variables
 app.use(express.json()); // gives access to req.body
 app.use(cors());
 
+// Heroku Config Var
+if (process.env.NODE_ENV === "production") {
+	app.use(express.static("../client/build"));
+}
+
 // ROUTES //
 
 // Register and Login Routes
