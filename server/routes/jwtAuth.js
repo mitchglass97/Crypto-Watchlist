@@ -74,6 +74,7 @@ router.post("/login", validInfo, async (req, res) => {
 
 // Verify JWT Token
 router.get("/is-verify", authorization, async (req, res) => {
+	console.log("HELLO");
 	try {
 		res.json(true);
 	} catch (error) {
