@@ -57,7 +57,6 @@ const NavBar = (props) => {
 									<img
 										src={avatar}
 										className='dropdown-toggle'
-										type='button'
 										id='dropdownMenuButton'
 										data-toggle='dropdown'
 									></img>

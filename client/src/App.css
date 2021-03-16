@@ -290,6 +290,7 @@ tr th {
 #dropdownMenuButton {
 	margin-left: 10px;
 	width: 40px !important;
+	cursor: pointer;
 }
 
 .dropdown-menu {
