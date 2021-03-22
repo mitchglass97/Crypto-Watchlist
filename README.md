@@ -1,3 +1,5 @@
+**_(Note: typetypetype is hosted in Heroku on a free account, so if you visit the site it may take up to 20 seconds for the app to spin up)_**
+
 # Welcome
 
 ![Landing Page](https://user-images.githubusercontent.com/52224377/110902002-cb416f80-82ca-11eb-9972-480ee2dee246.png)
