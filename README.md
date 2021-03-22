@@ -1,4 +1,4 @@
-_(Note: Crypto Watchlist is hosted in Heroku on a free Heroku account, so if you visit the site it may take up to 30 seconds for the app to spin up)_
+_(Note: Crypto Watchlist is hosted in Heroku on a free account, so if you visit the site it may take up to 30 seconds for the app to spin up)_
 
 # Welcome
 
